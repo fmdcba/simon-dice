@@ -1,0 +1,55 @@
+#cuadro-1 {
+  background-color: yellow;
+
+}
+
+#cuadro-2 {
+  background-color: blue;
+}
+
+#cuadro-3 {
+  background-color: red;
+}
+
+#cuadro-4 {
+  background-color: green;
+}
+
+header {
+  height: 20vh;
+
+}
+
+.cuadro {
+  border: solid 3px grey;
+  opacity: 60%;
+  transition: 1000ms;
+  height: 40vh;
+}
+
+header{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 0.5em 0em 0.5em 0em;
+}
+
+h1 {
+  align-items: flex-start;
+}
+
+.oculto{
+  display: none;
+}
+
+footer p{
+  margin-left: 1em;
+}
+
+span {
+  padding: 1em 1em 1em 1em;
+}
+
+#turno,#puntaje {
+  padding-bottom: 2px;
+}
