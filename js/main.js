@@ -1,5 +1,5 @@
 const sequenciaSimon = [];
-const turnoUsuario = [];
+let sequenciaUsuario = [];
 
 document.querySelector('#iniciar').onclick = function() {
   const $colores = document.querySelectorAll('.color');
@@ -48,12 +48,14 @@ function bloquearInputUsuario(){
 function desbloquearInputUsuario(){
   document.querySelectorAll('.color').forEach(function(color) {
     color.onclick = function(event) {
-      console.log(event.target);
+      resaltarColor(event.target)
+      sequenciaUsuario.push(event.target)
+      console.log(sequenciaUsuario)
     }
   })
 }
 
 function manejarTurnoUsuario(){
+  sequenciaUsuario = [];
   desbloquearInputUsuario();
-
 }
