@@ -18,11 +18,11 @@ function obtenerColorAleatorio(colores) {
 }
 
 function mostrarSequenciaSimon(colores) {
-  sequenciaSimon.forEach(function(posicion, index){
-    const RETRASO_MS = (index + 1) * 1000
+  sequenciaSimon.forEach(function(elemento, indice){
+    const RETRASO_MS = (indice + 1) * 1000
 
     setTimeout(function () {
-      resaltarColor(colores[posicion])
+      resaltarColor(colores[elemento])
     }, RETRASO_MS);
   })
 }
@@ -51,3 +51,4 @@ function desbloquearInputUsuario(){
     }
   })
 }
+
