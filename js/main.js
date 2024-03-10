@@ -1,31 +1,39 @@
-const turnoSimon = [];
+const sequenciaSimon = [];
 const turnoUsuario = [];
 
 document.querySelector('#iniciar').onclick = function() {
   const $colores = document.querySelectorAll('.color');
 
-  /* reiniciar(); */
-  bloquearInputUsuario();
   manejarTurnoSimon($colores);
 }
 
 function manejarTurnoSimon(colores) {
-  actualizarSecuenciaSimon(colores);
-  resaltarColor();
-  manejarTurnoUsuario();
+  obtenerColorAleatorio(colores);
+  mostrarSequenciaSimon(colores)
 }
 
-function manejarTurnoUsuario() {
-  desbloquearInputUsuario();
-  actualizarSecuenciaUsuario()
-  const esValido = chequearJugada();
+function obtenerColorAleatorio(colores) {
+  const colorAleatorio = Math.floor(Math.random() * colores.length);
+  return sequenciaSimon.push(colorAleatorio)
+}
 
-  if(esValido) {
-    manejarTurnoSimon()
-  } else {
-    mostrarMensaje
-  }
+function mostrarSequenciaSimon(colores) {
+  sequenciaSimon.forEach(function(posicion, index){
+    const RETRASO_MS = (index + 1) * 1000
 
+    setTimeout(function () {
+      resaltarColor(colores[posicion])
+    }, RETRASO_MS);
+  })
+}
+
+function resaltarColor(cuadro){
+  cuadro.style.opacity = "100%";
+
+
+  setTimeout(function() {
+    cuadro.style.opacity = "60%";
+  }, 500);
 }
 
 function bloquearInputUsuario(){
@@ -43,31 +51,3 @@ function desbloquearInputUsuario(){
     }
   })
 }
-
-
-
-
-/* function manejarTurnoSimon(){
-  const $colores = document.querySelectorAll('.color');
-  turnoSimon.push(obtenerNumeroAleatorio($colores))
-
-  turnoSimon.forEach(turno)
-}
-
-function pintarCuadro(cuadro){
-  cuadro.style.opacity = "100%";
-
-  setTimeout(function() {
-  cuadro.style.opacity = "60%";
-  }, 1000);
-}
-
-function obtenerNumeroAleatorio(cuadros) {
-  return Math.floor(Math.random() * cuadros.length)
-}
-
-function obtenerColorAleatorio(colores) {
-  const numeroAleatorio = obtenerNumeroAleatorio(colores)
-  return pintarCuadro(colores[numeroAleatorio]);
-}
- */
