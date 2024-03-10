@@ -2,15 +2,14 @@ const sequenciaSimon = [];
 let sequenciaUsuario = [];
 
 document.querySelector('#iniciar').onclick = function() {
-  const $colores = document.querySelectorAll('.color');
-
-  manejarTurnoSimon($colores);
+  manejarTurnoSimon();
 }
 
-function manejarTurnoSimon(colores) {
+function manejarTurnoSimon() {
+  const $colores = document.querySelectorAll('.color');
   bloquearInputUsuario();
-  obtenerColorAleatorio(colores);
-  mostrarSequenciaSimon(colores);
+  obtenerColorAleatorio($colores);
+  mostrarSequenciaSimon($colores);
   manejarTurnoUsuario();
 }
 
@@ -46,13 +45,18 @@ function bloquearInputUsuario(){
 }
 
 function desbloquearInputUsuario(){
+  let contador = 0;
+
   document.querySelectorAll('.color').forEach(function(color) {
     color.onclick = function(event) {
+      contador++;
       const eleccionUsuario = event.target
       sequenciaUsuario.push(eleccionUsuario)
       resaltarColor(eleccionUsuario);
-      chequearEleccionUsuario(eleccionUsuario);
-      console.log(sequenciaUsuario)
+      chequearEleccionUsuario(contador);
+      if(contador === sequenciaSimon.length) {
+        manejarTurnoSimon()
+      }
     }
   })
 }
@@ -64,10 +68,16 @@ function manejarTurnoUsuario(){
   }, sequenciaSimon.length * 1000);
 }
 
-function chequearEleccionUsuario(){
-  sequenciaUsuario.forEach(function(elemento, indice) {
-    if (elemento !== sequenciaSimon[indice]) {
-      alert('perdiste')
+function chequearEleccionUsuario(contador){
+
+  while (contador < sequenciaSimon.length) {
+    sequenciaUsuario.forEach(function(elemento, indice) {
+      if (elemento !== sequenciaSimon[indice]) {
+        alert('perdiste');
+        contador = sequenciaSimon.length;
+      } else {
+        contador ++;
     }
   })
+  }
 }
