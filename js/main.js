@@ -59,7 +59,9 @@ function desbloquearInputUsuario(){
 
 function manejarTurnoUsuario(){
   sequenciaUsuario = [];
-  desbloquearInputUsuario();
+  setTimeout(function() {
+    desbloquearInputUsuario();
+  }, sequenciaSimon.length * 1000);
 }
 
 function chequearEleccionUsuario(){
