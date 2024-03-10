@@ -48,8 +48,10 @@ function bloquearInputUsuario(){
 function desbloquearInputUsuario(){
   document.querySelectorAll('.color').forEach(function(color) {
     color.onclick = function(event) {
-      resaltarColor(event.target)
-      sequenciaUsuario.push(event.target)
+      const eleccionUsuario = event.target
+      sequenciaUsuario.push(eleccionUsuario)
+      resaltarColor(eleccionUsuario);
+      chequearEleccionUsuario(eleccionUsuario);
       console.log(sequenciaUsuario)
     }
   })
@@ -58,4 +60,12 @@ function desbloquearInputUsuario(){
 function manejarTurnoUsuario(){
   sequenciaUsuario = [];
   desbloquearInputUsuario();
+}
+
+function chequearEleccionUsuario(){
+  sequenciaUsuario.forEach(function(elemento, indice) {
+    if (elemento !== sequenciaSimon[indice]) {
+      alert('perdiste')
+    }
+  })
 }
