@@ -8,28 +8,29 @@ document.querySelector('#iniciar').onclick = function() {
 }
 
 function manejarTurnoSimon(colores) {
+  bloquearInputUsuario();
   obtenerColorAleatorio(colores);
-  mostrarSequenciaSimon(colores)
+  mostrarSequenciaSimon(colores);
+  manejarTurnoUsuario();
 }
 
 function obtenerColorAleatorio(colores) {
   const colorAleatorio = Math.floor(Math.random() * colores.length);
-  return sequenciaSimon.push(colorAleatorio)
+  return sequenciaSimon.push(colores[colorAleatorio])
 }
 
-function mostrarSequenciaSimon(colores) {
+function mostrarSequenciaSimon() {
   sequenciaSimon.forEach(function(elemento, indice){
     const RETRASO_MS = (indice + 1) * 1000
 
     setTimeout(function () {
-      resaltarColor(colores[elemento])
+      resaltarColor(elemento)
     }, RETRASO_MS);
   })
 }
 
 function resaltarColor(cuadro){
   cuadro.style.opacity = "100%";
-
 
   setTimeout(function() {
     cuadro.style.opacity = "60%";
@@ -52,3 +53,7 @@ function desbloquearInputUsuario(){
   })
 }
 
+function manejarTurnoUsuario(){
+  desbloquearInputUsuario();
+
+}
