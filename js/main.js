@@ -121,7 +121,7 @@ function actualizarPuntos() {
 function terminarJuego() {
   const $botonJugar = document.querySelector('button');
   $botonJugar.className = 'btn btn-danger btn-lg';
-  $botonJugar.textContent = 'Reinciar';
+  $botonJugar.textContent = 'Reiniciar';
 
   document.querySelector('#turno').textContent = 'Perdiste!'
 }
