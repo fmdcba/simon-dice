@@ -3,27 +3,27 @@ body {
   margin-right: 14em;
 }
 
-#color-0 {
+#amarillo {
   background-color: yellow;
   border-top-left-radius: 100%;
 }
 
-#color-1 {
+#azul {
   background-color: blue;
   border-top-right-radius: 100%;
 }
 
-#color-2 {
+#rojo {
   background-color: red;
   border-bottom-left-radius: 100%;
 }
 
-#color-3 {
+#verde {
   background-color: green;
   border-bottom-right-radius: 100%;
 }
 
-header {
+ header {
   height: 25vh;
 }
 
@@ -59,4 +59,8 @@ span {
 
 #turno, #puntos {
   padding-bottom: 2px;
+}
+
+#color {
+  text-transform: uppercase;
 }
