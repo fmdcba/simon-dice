@@ -5,20 +5,25 @@ let puntos = 0;
 document.querySelector('#jugar').onclick = comenzarNuevaPartida;
 
 function comenzarNuevaPartida() {
-  document.querySelector('h1').textContent = 'Simón dice';
-  document.querySelector('button').textContent = 'Jugar';
+  reiniciar();
+  manejarTurnoSimon();
+}
+
+function reiniciar() {
+  document.querySelector('#turno').textContent = 'Hace click en "Jugar"';
+  const $botonJugar = document.querySelector('button');
+  $botonJugar.textContent = 'Jugar';
+  $botonJugar.className = 'btn btn-primary btn-lg';
 
   sequenciaSimon = [];
   sequenciaUsuario = [];
   puntos = 0;
-
-  manejarTurnoSimon();
 }
 
 function manejarTurnoSimon() {
   const $colores = document.querySelectorAll('.color');
 
-  actualizarTurno('simón');
+  actualizarTurno('Turno Simón');
   bloquearInputUsuario();
   actualizarSecuenciaSimon($colores);
   mostrarSequenciaSimon();
@@ -29,7 +34,7 @@ function manejarTurnoUsuario(){
   sequenciaUsuario = [];
 
   setTimeout(function () {
-    actualizarTurno('usuario');
+    actualizarTurno('Turno usuario');
     desbloquearInputUsuario();
   }, sequenciaSimon.length * 1000);
 
@@ -59,15 +64,6 @@ function mostrarSequenciaSimon(){
       resaltarColor(elemento);
     }, RETRASO_MS);
   })
-}
-
-function reiniciar() {
-  document.querySelector('#color').textContent = 'Hacé click en "Jugar"';
-  document.querySelector('#puntos').textContent = puntos;
-
-  sequenciaSimon = [];
-  sequenciaUsuario = [];
-  puntos = [];
 }
 
 function obtenerColorAleatorio(colores) {
@@ -123,6 +119,9 @@ function actualizarPuntos() {
 }
 
 function terminarJuego() {
-  document.querySelector('h1').textContent = 'Simón dice: Perdiste';
-  document.querySelector('button').textContent = 'Reiniciar';
+  const $botonJugar = document.querySelector('button');
+  $botonJugar.className = 'btn btn-danger btn-lg';
+  $botonJugar.textContent = 'Reinciar';
+
+  document.querySelector('#turno').textContent = 'Perdiste!'
 }
