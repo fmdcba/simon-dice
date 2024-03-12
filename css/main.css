@@ -27,6 +27,7 @@
   opacity: 60%;
   transition: 1000ms;
   height: 35vh;
+  max-width: 35%;
 }
 
 header{
@@ -59,3 +60,4 @@ span {
 #color {
   text-transform: uppercase;
 }
+
